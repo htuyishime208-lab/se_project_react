@@ -1,7 +1,6 @@
 function Footer() {
 
-  return 
-    <> </>;
+  return  <p className="Footer__info">Developed By Honor 2026 </p>;
   
 }
 
