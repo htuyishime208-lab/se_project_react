@@ -1,0 +1,52 @@
+.Toggle-Switch{
+width: 56px;
+height: 28px;
+border: 2px solid #7e7e7e;
+border-radius: 20px;
+padding: 0 12px;
+align-items: center;
+display: flex;
+justify-content: space-between;
+box-sizing: border-box;
+position: relative;
+}
+
+.Toggle-Switch__checkbox{
+    visibility: hidden;
+    position:absolute;
+}
+
+
+.Toggle-Switch__circle{
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 28px;
+    height: 28px;
+    background-color: black;
+    border-radius: 50%;
+    z-index:-1;
+}
+
+.Toggle-Switch__checkbox:checked + .Toggle-Switch__circle{
+    right: -2px;
+    left: unset;
+}
+.Toggle-Switch__value {
+    color: #7e7e7e;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+    font-family: Cabinet Grotesk, sans-serif;
+}
+
+
+.Toggle-Switch__checkbox:checked + .Toggle-Switch__value_right{
+color: #fff;
+transform: translateX(100px);
+}
+
+.Toggle-Switch__checkbox:checked + .Toggle-Switch__value_left{
+color: #fff;
+
+}
