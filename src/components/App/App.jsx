@@ -59,7 +59,7 @@ useEffect(() =>{
       <Main 
       weatherData={weatherData}
       clothingsItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />
-      <Footer />
+      <Footer  />
       <ItemModal card={selectedCard} isOpen={activeModal ==="item-modal"}  onClose={closeModal} >
 
       </ItemModal>
