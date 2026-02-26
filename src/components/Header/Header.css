@@ -27,11 +27,18 @@
 
 
 }
+
+.header__link{
+    display: flex;
+    text-decoration: none;
+    color: #000;
+}
 .header__username{
    
     width: 157px;
     height: 25px;
-  margin-top: 16px;
+    margin-top: 16px;
+
     
 
 
@@ -45,6 +52,6 @@
     margin-left: 0px;
     border-radius: 1px;
     margin-top: 16px;
-
+   
 
 }

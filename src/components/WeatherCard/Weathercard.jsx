@@ -12,8 +12,8 @@ const selectedTemp =
  
     return (
     <section className="weather__card"> 
-    <img src={weatherConditionImages["day"][weatherData.weatherCondition]?.image} className="weather-card__image"/>
-    <p className="weather__card-temp">{selectedTemp} &deg; {contextValue.currentTempUnit}</p>nm
+    <img src={weatherConditionImages["day"]?.[weatherData.weatherCondition]?.image} className="weather-card__image"/>
+    <p className="weather__card-temp">{selectedTemp} &deg; {contextValue.currentTempUnit}</p>
 
     </section>
   );

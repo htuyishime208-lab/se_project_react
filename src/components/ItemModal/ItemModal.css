@@ -43,6 +43,7 @@ display: block;
     position: absolute;
     top: 24px;
     right: 24px;
+    
 }
 
 .modal__footer{
@@ -90,4 +91,26 @@ text-align: left;
     width: 440px;
     height: 52px;
     margin-top: 50px;
+}
+
+
+.modal__delete-btn{
+   
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 20px;
+    right: 55px;
+    background: url(../images/delete.svg);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+   
+
+}
+
+.modal__delete-btn:hover{
+   background-image: url(../images/delhover.svg);
+   opacity: 0.3;
+
 }

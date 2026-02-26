@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../Images/Logo.svg";
 import avatar from "../Images/Avatar.svg";
 import "./Header.css";
@@ -21,8 +22,10 @@ const dateStr= now.toLocaleDateString("default",{
           <ToggleSwitch/>
          
     <button onClick={handleAddGarmentModal} className="header__add-clothes-btn">+ Add Clothes</button>
+    <Link className="header__link" to="/profile">
     <p className="header__username">Terrence Tegegne</p>
-     <img src={avatar} alt="Avatar logo" className="header__avatar"/> </div>
+     <img src={avatar} alt="Avatar logo" className="header__avatar"/>
+     </Link> </div>
     </header>
   
   );

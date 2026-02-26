@@ -6,8 +6,9 @@ return (
  <button type="button" className="modal__close-btn modal__close-btn_type_form">X</button>
  <form onSubmit={handleSubmit} className="modal__form">
 {children}
- </form>
 <button type="submit" className="modal__submit-btn ">{buttontext}</button>
+ </form>
+
 
 </div>
 

@@ -1,4 +1,14 @@
+.Footer{
+    display: flex;
+    justify-content: space-between;
+           
+}
 .Footer__info{
-margin: auto;
+margin-top: 20px;
+margin-left: 30px;
 
+}
+
+.Footer__date{
+    margin-right: 30px;
 }

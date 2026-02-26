@@ -4,11 +4,10 @@ function ItemCard({data, onCardClick}) {
     onCardClick(data);
   }
 
-
   return (
     <li className="card">
         <h2 className="card__title">{data.name}</h2>
-        <img src={data.link} alt={data.name} className="card__image" onClick ={handleOpenCard} />
+        <img src={data.imageUrl} alt={data.name} className="card__image" onClick ={handleOpenCard} />
     </li>
   );
 }

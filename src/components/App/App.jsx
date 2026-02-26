@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import ItemModal from '../ItemModal/ItemModal';
-import ModalWithForm from '../ModalWithForm/ModalWithForm'
+import AddItemModal from '../AddItemModal/AddItemModal';
+import Profile from '../Profile/Profile';
 import { defaultClothingItems } from '../../utils/defaultClothingItems';
 import './App.css'
 import {getWeatherData} from '../../utils/weatherApi';
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext';
+import { addItem, getItems, deleteItem } from '../../../api';
+
+
 
 function App() {
 const [clothingItems,setClothingItems]= useState(defaultClothingItems);
@@ -16,6 +21,12 @@ const [selectedCard, setSelectedCard]= useState({});
 const [weatherData, setWeatherData]= useState({name:"", temp:"0"});
 const closeModal = () => setActiveModal(null);
 const [currentTempUnit, setCurrentTempUnit]= useState("F");
+
+
+const [items, setItems] = useState([
+    { id: 1 },
+    { id: 2},
+  ]);
 
 
 
@@ -39,6 +50,24 @@ function handleAddGarmentModal() {
     }
 
 
+function handleAddItemSubmit (inputValues){
+  addItem(inputValues).then((data) =>{
+      setClothingItems([data,...clothingItems]);
+  })
+  .catch(console.error);
+  
+}
+
+ function handleDeleteItem(id) {
+    deleteItem(id)
+      .then(() => {
+        // Remove deleted item from state
+        setItems((prev) => prev.filter((item) => item.id !== id));
+      })
+      .catch(console.error);
+  }
+
+
 useEffect(() =>{
   getWeatherData()
   .then((data) =>{
@@ -48,7 +77,13 @@ useEffect(() =>{
   }, []);
 
 useEffect(() =>{
-  setClothingItems(defaultClothingItems);
+  
+  getItems().then((items)=>{
+     if (Array.isArray(items)) {
+    const sortedItems = [...items].sort((a, b) => b.id - a.id);
+     setClothingItems(sortedItems,items);
+
+}}).catch(console.error);
 }, []);
   return (
     <CurrentTemperatureUnitContext.Provider value={{currentTempUnit, handleTempUnitChange}}>
@@ -56,49 +91,28 @@ useEffect(() =>{
       <Header 
       weatherData={weatherData}
       handleAddGarmentModal={handleAddGarmentModal}/>
-      <Main 
+      
+      <Routes>
+
+        <Route path="/" element={<Main 
       weatherData={weatherData}
-      clothingsItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />
+      clothingItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />}>
+        </Route>
+
+         <Route path="/profile" element={<Profile clothingItems={clothingItems}  handleAddGarmentModal={handleAddGarmentModal} handleOpenItemModal={handleOpenItemModal}/>}>
+        </Route>
+
+
+      </Routes>
+
+      
       <Footer  />
-      <ItemModal card={selectedCard} isOpen={activeModal ==="item-modal"}  onClose={closeModal} >
+
+      <ItemModal card={selectedCard} isOpen={activeModal ==="item-modal"}  onClose={closeModal}  handleDeleteItem={handleDeleteItem} >
 
       </ItemModal>
 
-      <ModalWithForm  
-      isOpen={activeModal ==="add-garment-modal"}
-      title={"New Garment"}
-      buttontext={"Add Garment"}
-       >
-        <fieldset className='modal__fieldset'>
-        <label htmlFor="add-garment-name" className="modal__label">
-      Name
-    <input id='add-garment-name'  placeholder="Name" type="text" className="modal__input" />
-     <label htmlFor="" className="modal__label">
-      Image
-    <input  placeholder="Image URL" type="url" className="modal__input" />
-</label></label>
-</fieldset >
-<fieldset className='modal__fieldset'>
-  <legend>Select the weather type:</legend>
-
-  <div>
-    <input className='modal__radio-btn' type="radio" id="hot" name="weather" value="hot" />
-    <label htmlFor="hot">Hot</label>
-  </div>
-
-  <div>
-    <input type="radio" id="warm" name="weather" value="warm" />
-    <label className='modal__label' htmlFor="warm">Warm</label>
-  </div>
-
-  <div>
-    <input type="radio" id="cold" name="weather" value="cold" />
-    <label htmlFor="cold">Cold</label>
-  </div>
-</fieldset>
-
-
-       </ModalWithForm>
+      <AddItemModal isOpen={activeModal ==="add-garment-modal"} handleAddItemSubmit={handleAddItemSubmit}/>
       
        </div>
        </CurrentTemperatureUnitContext.Provider>
