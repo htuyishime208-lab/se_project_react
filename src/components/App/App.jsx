@@ -94,13 +94,14 @@ useEffect(() =>{
       
       <Routes>
 
-           <Route path="/" element={<Header 
-      />}>
+           <Route path="/header" element={<Header 
+      weatherData={weatherData}
+      handleAddGarmentModal={handleAddGarmentModal} />}>
         </Route>
 
-         <Route path="/" element={<Footer
-      />}>
-        </Route>
+       
+
+
 
         <Route path="/" element={<Main 
       weatherData={weatherData}
