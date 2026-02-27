@@ -94,7 +94,15 @@ useEffect(() =>{
       
       <Routes>
 
-        <Route path="/header" element={<Main 
+           <Route path="/" element={<Header 
+      />}>
+        </Route>
+
+         <Route path="/" element={<Footer
+      />}>
+        </Route>
+
+        <Route path="/" element={<Main 
       weatherData={weatherData}
       clothingItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />}>
         </Route>
