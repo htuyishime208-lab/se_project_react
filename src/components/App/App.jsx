@@ -94,7 +94,7 @@ useEffect(() =>{
       
       <Routes>
 
-        <Route path="/" element={<Main 
+        <Route path="/header" element={<Main 
       weatherData={weatherData}
       clothingItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />}>
         </Route>
