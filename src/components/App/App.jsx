@@ -11,6 +11,7 @@ import './App.css'
 import {getWeatherData} from '../../utils/weatherApi';
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext';
 import { addItem, getItems, deleteItem } from '../../../api';
+import Logo from '../Profile/Logo';
 
 
 
@@ -94,6 +95,15 @@ useEffect(() =>{
       
       <Routes>
 
+<Route path="/" element={<Main 
+      weatherData={weatherData}
+      clothingItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />}>
+        </Route>
+
+
+         <Route path="/logo" element={<Logo clothingItems={clothingItems}  
+         handleAddGarmentModal={handleAddGarmentModal} handleOpenItemModal={handleOpenItemModal}/>}>
+        </Route>
 
         
 
@@ -105,7 +115,8 @@ useEffect(() =>{
         </Route>
 
 
-         <Route path="/profile" element={<Profile clothingItems={clothingItems}  handleAddGarmentModal={handleAddGarmentModal} handleOpenItemModal={handleOpenItemModal}/>}>
+         <Route path="/profile" element={<Profile clothingItems={clothingItems}  
+         handleAddGarmentModal={handleAddGarmentModal} handleOpenItemModal={handleOpenItemModal}/>}>
         </Route>
 
 
