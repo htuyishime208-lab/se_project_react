@@ -13,7 +13,9 @@ const dateStr= now.toLocaleDateString("default",{
   return (
         <header className="header"> 
         <div className="header__side">
+          <Link to ="/profile">
         < img src={logo} alt="WTWR logo" className="header__logo"/>
+        </Link>
         <p className="header__place" >
           <time className="header__datime" dateTime= {now}> {dateStr}</time> , {weatherData.city}
           </p>
