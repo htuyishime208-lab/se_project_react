@@ -1,6 +1,6 @@
 import { useForm } from "../../Hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-function AddItemModal({isOpen, handleAddItemSubmit}){
+function AddItemModal({isOpen, onClose, handleAddItemSubmit}){
     const { values, handleChange}= useForm({name: "", weather:"hot", imageUrl:""});
     
     const handleSubmit = (event) => {
@@ -12,6 +12,7 @@ function AddItemModal({isOpen, handleAddItemSubmit}){
     return(
         <ModalWithForm  
       isOpen={isOpen}
+      onClose={onClose}
       title={"New Garment"}
       buttontext={"Add Garment"}
       handleSubmit={handleSubmit}

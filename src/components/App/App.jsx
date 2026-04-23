@@ -129,7 +129,7 @@ useEffect(() =>{
 
       </ItemModal>
 
-      <AddItemModal isOpen={activeModal ==="add-garment-modal"} handleAddItemSubmit={handleAddItemSubmit}/>
+      <AddItemModal isOpen={activeModal ==="add-garment-modal"} onClose={closeModal} handleAddItemSubmit={handleAddItemSubmit}/>
       
        </div>
        </CurrentTemperatureUnitContext.Provider>
