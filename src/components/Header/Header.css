@@ -27,6 +27,19 @@
 
 
 }
+.header__signup-btn{
+    height: 24px;
+    width: 116px;  
+    background-color: white;
+    border: none;
+}
+
+.header__login-btn{
+    height: 24px;
+    width: 116px;  
+    background-color: white;
+    border: none; 
+}
 
 .header__link{
     display: flex;

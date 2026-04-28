@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import ItemModal from '../ItemModal/ItemModal';
 import AddItemModal from '../AddItemModal/AddItemModal';
+import LoginForm from  "../SignIn/Login"
 import Profile from '../Profile/Profile';
 import { defaultClothingItems } from '../../utils/defaultClothingItems';
 import './App.css'
@@ -38,6 +39,11 @@ function handleOpenItemModal(card) {
 
 function handleAddGarmentModal() {
   setActiveModal("add-garment-modal");
+
+}
+
+function handleLogin() {
+  setActiveModal("SignUp");
 
 }
 
@@ -91,13 +97,13 @@ useEffect(() =>{
     <div className='app'>
       <Header 
       weatherData={weatherData}
-      handleAddGarmentModal={handleAddGarmentModal}/>
+      handleAddGarmentModal={handleAddGarmentModal} onClose={closeModal} handleLogin={handleLogin}/>
       
       <Routes>
 
 <Route path="/" element={<Main 
       weatherData={weatherData}
-      clothingItems={clothingItems} handleOpenItemModal={handleOpenItemModal} />}>
+      clothingItems={clothingItems}  handleOpenItemModal={handleOpenItemModal} />}>
         </Route>
 
 
@@ -116,7 +122,7 @@ useEffect(() =>{
 
 
          <Route path="/profile" element={<Profile clothingItems={clothingItems}  
-         handleAddGarmentModal={handleAddGarmentModal} handleOpenItemModal={handleOpenItemModal}/>}>
+         handleAddGarmentModal={handleAddGarmentModal}  handleOpenItemModal={handleOpenItemModal}/>}>
         </Route>
 
 
@@ -129,7 +135,10 @@ useEffect(() =>{
 
       </ItemModal>
 
-      <AddItemModal isOpen={activeModal ==="add-garment-modal"} handleAddItemSubmit={handleAddItemSubmit}/>
+      <AddItemModal isOpen={activeModal ==="add-garment-modal"} onClose={closeModal} handleAddItemSubmit={handleAddItemSubmit} />
+
+      <LoginForm  isOpen={activeModal ==="SignUp"} onClose={closeModal}/>
+
       
        </div>
        </CurrentTemperatureUnitContext.Provider>
