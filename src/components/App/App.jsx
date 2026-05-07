@@ -5,7 +5,8 @@ import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import ItemModal from '../ItemModal/ItemModal';
 import AddItemModal from '../AddItemModal/AddItemModal';
-import LoginForm from  "../SignIn/Login"
+import LoginForm from  "../SignIn/Login";
+import SignUpForm from  "../SignIn/SignUp"
 import Profile from '../Profile/Profile';
 import { defaultClothingItems } from '../../utils/defaultClothingItems';
 import './App.css'
@@ -23,6 +24,10 @@ const [selectedCard, setSelectedCard]= useState({});
 const [weatherData, setWeatherData]= useState({name:"", temp:"0"});
 const closeModal = () => setActiveModal(null);
 const [currentTempUnit, setCurrentTempUnit]= useState("F");
+
+const [isLoggedIn, setIsLoggedIn] = useState(false); // Tracks login status
+const [user, setUser] = useState(null);              // Stores user info object
+const [showLoginModal, setShowLoginModal] = useState(false); // Controls modal visibility
 
 
 const [items, setItems] = useState([
@@ -43,9 +48,30 @@ function handleAddGarmentModal() {
 }
 
 function handleLogin() {
+  setActiveModal("Login");
+
+}
+
+function onLoginSuccess(data) {
+  setIsLoggedIn(true);
+  setUser(data.user);
+  setActiveModal(false);
+  localStorage.setItem("jwt", data.token);
+}
+
+function handleSignUp() {
   setActiveModal("SignUp");
 
 }
+
+
+function onSignUpSuccess(data) {
+  setIsLoggedIn(true);
+  setUser(data.user);
+  setActiveModal(false);
+  localStorage.setItem("jwt", data.token);
+}
+
 
   function handleTempUnitChange(){
         if (currentTempUnit=="F"){
@@ -97,7 +123,7 @@ useEffect(() =>{
     <div className='app'>
       <Header 
       weatherData={weatherData}
-      handleAddGarmentModal={handleAddGarmentModal} onClose={closeModal} handleLogin={handleLogin}/>
+      handleAddGarmentModal={handleAddGarmentModal} onClose={closeModal} handleLogin={handleLogin} handleSignUp={handleSignUp}/>
       
       <Routes>
 
@@ -137,7 +163,8 @@ useEffect(() =>{
 
       <AddItemModal isOpen={activeModal ==="add-garment-modal"} onClose={closeModal} handleAddItemSubmit={handleAddItemSubmit} />
 
-      <LoginForm  isOpen={activeModal ==="SignUp"} onClose={closeModal}/>
+      <LoginForm  isOpen={activeModal ==="Login"} onClose={closeModal} onLoginSuccess={onLoginSuccess}/>
+      <SignUpForm  isOpen={activeModal ==="SignUp"} onClose={closeModal} onSignUpSuccess={onSignUpSuccess}/>
 
       
        </div>

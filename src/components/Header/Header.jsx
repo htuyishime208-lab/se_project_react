@@ -4,7 +4,7 @@ import avatar from "../Images/Avatar.svg";
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({handleAddGarmentModal,handleLogin, weatherData,isOpen,onClose}) {
+function Header({handleAddGarmentModal,handleLogin, weatherData,isOpen,onClose,handleSignUp}) {
 const now = new Date();
 const dateStr= now.toLocaleDateString("default",{
   month:"long",
@@ -29,7 +29,7 @@ const dateStr= now.toLocaleDateString("default",{
          
     <button onClick={handleAddGarmentModal} className="header__add-clothes-btn">+ Add Clothes</button>
 
-    <button onClick={handleAddGarmentModal} className="header__signup-btn">SignUp</button>
+    <button onClick={handleSignUp} className="header__signup-btn">SignUp</button>
     <button onClick={handleLogin} className="header__login-btn">Login</button>
     <Link className="header__link" to="/profile">
     <p className="header__username">Terrence Tegegne</p>

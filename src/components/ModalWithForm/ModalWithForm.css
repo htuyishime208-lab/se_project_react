@@ -36,6 +36,7 @@ display: block;
     overflow: hidden;
     background-color: #fff;
     padding: 30px;
+   
 }
 
 
@@ -71,7 +72,7 @@ text-align: left;
 
 
 .modal__fieldset{
-    margin: 0;
+margin-top: 10px;
     padding: 0;
     border: none;
 
@@ -80,6 +81,7 @@ text-align: left;
 .modal__input{
     display: block;
     width: 100%;
+    margin-top: 10px;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -90,7 +92,7 @@ text-align: left;
 .modal__label{
     width: 440px;
     height: 52px;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 
@@ -112,5 +114,23 @@ text-align: left;
 .modal__delete-btn:hover{
    background-image: url(../images/delhover.svg);
    opacity: 0.3;
+
+}
+
+.modal__submit-btn {
+
+margin-top: 50px;
+}
+
+.modal__register-btn{
+    margin-top: 50px;
+
+}
+
+.button__Container{
+    display:flex;
+    position: relative;
+    gap: 10px;
+
 
 }

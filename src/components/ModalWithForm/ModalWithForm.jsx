@@ -16,7 +16,10 @@ return (
 
  <form onSubmit={handleSubmit} className="modal__form">
 {children}
+<div className="button__Container">
 <button type="submit" className="modal__submit-btn ">{buttontext}</button>
+  <button type="button" className="modal__register-btn ">Register</button>
+</div>
  </form>
 
 
